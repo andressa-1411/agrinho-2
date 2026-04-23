@@ -1,0 +1,18 @@
+/* VARIÁVEIS CSS */
+:root {
+    --green-primary: #28a745;
+    --green-secondary: #20c997;
+    --green-dark: #1e7e34;
+    --gray-dark: #2c3e50;
+    --gray-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box
