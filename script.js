@@ -1,42 +1,38 @@
-// Efeito de rolagem suave para os links do menu
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Ativa animações conforme o usuário rola a página
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.card, .benefit-card, .about-image');
+    
+    elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8;
+        
+        if (isVisible) {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }
+    });
+};
+
+// Configurações iniciais das animações
+window.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.card, .benefit-card, .about-image');
+    elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'all 0.8s ease-out';
+    });
+    animateOnScroll();
+});
+
+window.addEventListener('scroll', animateOnScroll);
+
+// Smooth Scroll para o menu
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        const targetId = this.getAttribute('href');
+        document.querySelector(targetId).scrollIntoView({
             behavior: 'smooth'
         });
     });
-});
-
-// Mudança de cor do header ao rolar
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.style.background = '#1b3022';
-        header.style.padding = '0.5rem 0';
-    } else {
-        header.style.background = 'rgba(45, 90, 39, 0.95)';
-        header.style.padding = '1rem 0';
-    }
-});
-
-// Animação simples de entrada (Fade In) ao rolar a página
-const observerOptions = {
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.card, .benefit-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease-out';
-    observer.observe(el);
 });
