@@ -1,4 +1,4 @@
-/* Configurações Gerais e Temas */
+/* Configurações Gerais */
 * {
     margin: 0;
     padding: 0;
@@ -6,33 +6,13 @@
 }
 
 :root {
-    /* Variáveis - Modo Claro (Padrão) */
-    --primary: #2e7d32;     
+    --primary: #2e7d32;     /* Verde Folha */
     --primary-light: #4caf50; 
-    --dark: #1b5e20;        
-    --accent: #d84315;      
-    --bg-body: #ffffff;
-    --bg-light: #f9fbf7;    
-    --bg-card: #ffffff;
-    --text: #2e3d30;        
-    --text-muted: #666666;
-    --nav-bg: rgba(255, 255, 255, 0.95);
-    --border-color: #dddddd;
-    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-fast: all 0.3s ease;
-}
-
-[data-theme="dark"] {
-    /* Variáveis - Modo Escuro */
-    --bg-body: #121612;
-    --bg-light: #1a201a;
-    --bg-card: #222a22;
-    --text: #e2ebd5;
-    --text-muted: #a3b09a;
-    --nav-bg: rgba(18, 22, 18, 0.95);
-    --border-color: #2d3b2d;
-    --dark: #4caf50;
-    --primary: #81c784;
+    --dark: #1b5e20;        /* Verde Escuro */
+    --accent: #d84315;      /* Terra Quente */
+    --bg-light: #f9fbf7;    /* Fundo levemente esverdeado/cinza */
+    --text: #2e3d30;        /* Texto grafite-esverdeado */
+    --transition: all 0.3s ease-in-out;
 }
 
 html {
@@ -42,9 +22,8 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text);
-    background-color: var(--bg-body);
     line-height: 1.6;
-    transition: var(--transition-slow);
+    background-color: #ffffff;
 }
 
 .container {
@@ -59,19 +38,6 @@ body {
 
 .bg-light {
     background-color: var(--bg-light);
-    transition: var(--transition-slow);
-}
-
-/* Efeito de Revelação ao rolar a página */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.scroll-reveal.active {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* Tags de Seção */
@@ -91,56 +57,26 @@ h2 {
     font-weight: 700;
     margin-bottom: 15px;
     text-align: center;
-    transition: var(--transition-slow);
 }
 
 .section-subtitle {
     text-align: center;
-    color: var(--text-muted);
+    color: #666;
     max-width: 600px;
     margin: 0 auto 50px auto;
     font-size: 1.1rem;
-    transition: var(--transition-slow);
 }
 
-/* Botão de Alternar Modo Claro/Escuro */
-.theme-switch-wrapper {
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    z-index: 1100;
-}
-
-.theme-toggle-btn {
-    background: var(--bg-card);
-    border: 2px solid var(--primary-light);
-    color: var(--text);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: var(--transition-fast);
-}
-
-.theme-toggle-btn:hover {
-    transform: scale(1.1) rotate(15deg);
-}
-
-/* Botões Gerais */
+/* Botões */
 .btn-primary {
     display: inline-block;
     padding: 12px 30px;
     background-color: var(--primary);
-    color: #fff !important;
+    color: #fff;
     text-decoration: none;
     border-radius: 30px;
     font-weight: 500;
-    transition: var(--transition-fast);
+    transition: var(--transition);
     border: none;
     cursor: pointer;
 }
@@ -148,7 +84,7 @@ h2 {
 .btn-primary:hover {
     background-color: var(--dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+    box-shadow: 0 5px 15px rgba(27, 94, 32, 0.3);
 }
 
 /* Navbar */
@@ -156,11 +92,10 @@ h2 {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: var(--nav-bg);
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     z-index: 1000;
     padding: 15px 0;
-    transition: var(--transition-slow);
 }
 
 .nav-container {
@@ -176,7 +111,6 @@ h2 {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--dark);
-    transition: var(--transition-slow);
 }
 
 .logo span {
@@ -197,18 +131,23 @@ h2 {
     text-decoration: none;
     color: var(--text);
     font-weight: 500;
-    transition: var(--transition-fast);
+    transition: var(--transition);
 }
 
 .nav-links a:hover {
-    color: var(--primary-light);
+    color: var(--primary);
 }
 
 .nav-links .btn-nav {
     background-color: var(--primary);
-    color: white !important;
+    color: white;
     padding: 8px 20px;
     border-radius: 20px;
+}
+
+.nav-links .btn-nav:hover {
+    background-color: var(--dark);
+    color: white;
 }
 
 /* Hero Section */
@@ -271,9 +210,8 @@ h2 {
 
 .sobre-text p {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: #555;
     margin-bottom: 20px;
-    transition: var(--transition-slow);
 }
 
 .sobre-img img {
@@ -290,17 +228,17 @@ h2 {
 }
 
 .pilar-card {
-    background: var(--bg-card);
+    background: white;
     padding: 40px 30px;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-    transition: var(--transition-slow);
+    transition: var(--transition);
     text-align: center;
 }
 
 .pilar-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 .pilar-icon {
@@ -312,13 +250,11 @@ h2 {
     color: var(--dark);
     margin-bottom: 15px;
     font-size: 1.3rem;
-    transition: var(--transition-slow);
 }
 
 .pilar-card p {
-    color: var(--text-muted);
+    color: #666;
     font-size: 0.95rem;
-    transition: var(--transition-slow);
 }
 
 /* Seção Vídeos */
@@ -329,17 +265,16 @@ h2 {
 }
 
 .video-item {
-    background: var(--bg-card);
+    background: #fff;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-    transition: var(--transition-slow);
 }
 
 .iframe-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; 
+    padding-bottom: 56.25%; /* Ratio 16:9 */
     height: 0;
     border-radius: 10px;
     overflow: hidden;
@@ -358,7 +293,6 @@ h2 {
     font-size: 1.1rem;
     color: var(--dark);
     text-align: center;
-    transition: var(--transition-slow);
 }
 
 /* Seção de Impacto */
@@ -370,25 +304,23 @@ h2 {
 }
 
 .impacto-card {
-    background: var(--bg-card);
+    background: #fff;
     padding: 40px 30px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-    transition: var(--transition-slow);
 }
 
 .impacto-num {
     font-size: 4rem;
     font-weight: 700;
-    color: var(--primary-light);
+    color: var(--primary);
     line-height: 1;
     margin-bottom: 15px;
 }
 
 .impacto-desc {
-    color: var(--text-muted);
+    color: #555;
     font-size: 1rem;
-    transition: var(--transition-slow);
 }
 
 .impacto-desc strong {
@@ -396,7 +328,6 @@ h2 {
     display: block;
     font-size: 1.1rem;
     margin-bottom: 5px;
-    transition: var(--transition-slow);
 }
 
 .impacto-card.esg {
@@ -423,7 +354,6 @@ h2 {
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-    transition: var(--transition-slow);
 }
 
 .form-group {
@@ -433,14 +363,12 @@ h2 {
 .form-group input, .form-group textarea {
     width: 100%;
     padding: 15px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: var(--bg-card);
-    color: var(--text);
     font-family: inherit;
     font-size: 1rem;
     outline: none;
-    transition: var(--transition-slow);
+    transition: var(--transition);
 }
 
 .form-group input:focus, .form-group textarea:focus {
@@ -453,8 +381,8 @@ h2 {
 
 /* Rodapé */
 footer {
-    background-color: #121612;
-    color: #e2ebd5;
+    background-color: var(--dark);
+    color: #fff;
     padding: 40px 0;
     text-align: center;
 }
@@ -484,9 +412,5 @@ footer {
     }
     .nav-links {
         display: none; 
-    }
-    .theme-switch-wrapper {
-        top: 10px;
-        right: 10px;
     }
 }
