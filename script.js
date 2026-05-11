@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Efeito de rolagem suave ao clicar nos links do menu
+    // 1. Efeito de rolagem suave ao clicar nos links do menu
     const navLinks = document.querySelectorAll(".nav-links a");
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
             const targetId = link.getAttribute("href");
             
-            // Só executa o scroll suave se for uma âncora interna
             if (targetId.startsWith("#")) {
                 e.preventDefault();
                 const targetSection = document.querySelector(targetId);
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Envio do formulário de contato (Apenas demonstração amigável)
+    // 2. Envio demonstrativo do formulário de contato
     const form = document.getElementById("contact-form");
     if (form) {
         form.addEventListener("submit", (e) => {
@@ -30,48 +29,60 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Animação de contagem numérica ao atingir a seção "Impacto"
+    // 3. ANIMAÇÃO DE PORCENTAGENS E NÚMEROS (Melhorada e Corrigida)
     const counters = document.querySelectorAll(".impacto-num");
-    const speed = 200; // Quanto menor, mais rápido
 
-    const startCounters = () => {
+    const animateCounters = () => {
         counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target"); // Valor final numérico
+            const type = counter.getAttribute("data-type");      // Tipo (plus ou percent)
+            
+            let count = 0;
+            const duration = 2000; // Tempo total da animação em milissegundos (2 segundos)
+            const increment = target / (duration / 16); // Baseado em ~60fps (16ms por frame)
+
             const updateCount = () => {
-                const targetText = counter.getAttribute("data-target");
-                const target = +targetText;
-                const currentText = counter.innerText.replace(/[^0-9]/g, '');
-                const current = +currentText;
-
-                const increment = target / speed;
-
-                if (current < target) {
-                    const nextValue = Math.ceil(current + increment);
-                    if (targetText.includes("%")) {
-                        counter.innerText = nextValue + "%";
-                    } else if (targetText.includes("+")) {
-                        counter.innerText = "+" + nextValue;
+                count += increment;
+                
+                if (count < target) {
+                    let roundedValue = Math.ceil(count);
+                    
+                    // Formata a exibição durante o crescimento do número
+                    if (type === "percent") {
+                        counter.innerText = roundedValue + "%";
+                    } else if (type === "plus") {
+                        counter.innerText = "+" + roundedValue;
                     } else {
-                        counter.innerText = nextValue;
+                        counter.innerText = roundedValue;
                     }
-                    setTimeout(updateCount, 15);
+                    
+                    requestAnimationFrame(updateCount);
                 } else {
-                    counter.innerText = targetText.includes("%") ? target + "%" : "+" + target;
+                    // Garante que termine exatamente no número final correto
+                    if (type === "percent") {
+                        counter.innerText = target + "%";
+                    } else if (type === "plus") {
+                        counter.innerText = "+" + target;
+                    } else {
+                        counter.innerText = target;
+                    }
                 }
             };
+            
             updateCount();
         });
     };
 
-    // Monitorar rolagem para disparar os números só quando visível
+    // Usando IntersectionObserver para disparar a animação apenas quando a seção estiver visível
     const observerOptions = {
-        threshold: 0.5
+        threshold: 0.3 // Dispara quando 30% da seção de impacto estiver na tela
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                startCounters();
-                observer.unobserve(entry.target);
+                animateCounters();
+                observer.unobserve(entry.target); // Desativa o observador para rodar a animação apenas uma vez
             }
         });
     }, observerOptions);
