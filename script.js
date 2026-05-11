@@ -1,29 +1,52 @@
-// Animação Simples de Surgimento ao Rolar (Scroll Reveal)
-const observerOptions = {
-    threshold: 0.1
-};
+// Efeito de contagem animada para os números estatísticos
+document.addEventListener("DOMContentLoaded", () => {
+    const stats = document.querySelectorAll(".stat-number");
+    
+    const animateStats = () => {
+        stats.forEach(stat => {
+            const targetText = stat.innerText;
+            // Verifica se possui o símbolo de + ou %
+            const hasPlus = targetText.includes("+");
+            const hasPercent = targetText.includes("%");
+            
+            // Extrai apenas o valor numérico
+            const targetValue = parseInt(targetText.replace(/[^0-9]/g, ''));
+            let startValue = 0;
+            const duration = 2000; // Tempo da animação em milissegundos
+            const stepTime = Math.abs(Math.floor(duration / targetValue));
+            
+            if (stat.dataset.animated) return; // Evita re-animar
+            stat.dataset.animated = true;
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-        }
-    });
-}, observerOptions);
+            const timer = setInterval(() => {
+                startValue += 1;
+                let displayValue = startValue;
+                
+                if (hasPlus) displayValue = "+" + startValue;
+                if (hasPercent) displayValue = startValue + "%";
+                
+                stat.innerText = displayValue;
+                
+                if (startValue >= targetValue) {
+                    clearInterval(timer);
+                    stat.innerText = targetText; // Garante o valor exato final
+                }
+            }, stepTime);
+        });
+    };
 
-document.querySelectorAll('.card, .stat-card, .about-image').forEach(el => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "all 0.6s ease-out";
-    observer.observe(el);
-});
+    // Ativa a animação quando a seção de estatísticas estiver visível na tela
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStats();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
 
-// Suavizar links internos
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const section = document.querySelector(this.getAttribute('href'));
-        section.scrollIntoView({ behavior: 'smooth' });
-    });
+    const statsSection = document.querySelector(".stats");
+    if(statsSection) {
+        observer.observe(statsSection);
+    }
 });
