@@ -411,6 +411,6 @@ footer {
         position: relative;
     }
     .nav-links {
-        display: none; /* Em projetos avançados, substitui-se por menu hambúrguer */
+        display: none; 
     }
 }
