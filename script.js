@@ -1,52 +1,83 @@
-// Efeito de contagem animada para os números estatísticos
 document.addEventListener("DOMContentLoaded", () => {
-    const stats = document.querySelectorAll(".stat-number");
     
-    const animateStats = () => {
-        stats.forEach(stat => {
-            const targetText = stat.innerText;
-            // Verifica se possui o símbolo de + ou %
-            const hasPlus = targetText.includes("+");
-            const hasPercent = targetText.includes("%");
+    // Efeito de rolagem suave ao clicar nos links do menu
+    const navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            const targetId = link.getAttribute("href");
             
-            // Extrai apenas o valor numérico
-            const targetValue = parseInt(targetText.replace(/[^0-9]/g, ''));
-            let startValue = 0;
-            const duration = 2000; // Tempo da animação em milissegundos
-            const stepTime = Math.abs(Math.floor(duration / targetValue));
-            
-            if (stat.dataset.animated) return; // Evita re-animar
-            stat.dataset.animated = true;
-
-            const timer = setInterval(() => {
-                startValue += 1;
-                let displayValue = startValue;
-                
-                if (hasPlus) displayValue = "+" + startValue;
-                if (hasPercent) displayValue = startValue + "%";
-                
-                stat.innerText = displayValue;
-                
-                if (startValue >= targetValue) {
-                    clearInterval(timer);
-                    stat.innerText = targetText; // Garante o valor exato final
+            // Só executa o scroll suave se for uma âncora interna
+            if (targetId.startsWith("#")) {
+                e.preventDefault();
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: "smooth"
+                    });
                 }
-            }, stepTime);
+            }
+        });
+    });
+
+    // Envio do formulário de contato (Apenas demonstração amigável)
+    const form = document.getElementById("contact-form");
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            alert(`Obrigado pelo contato, ${name}! Nossa equipe do Agro Sustentável retornará em breve.`);
+            form.reset();
+        });
+    }
+
+    // Animação de contagem numérica ao atingir a seção "Impacto"
+    const counters = document.querySelectorAll(".impacto-num");
+    const speed = 200; // Quanto menor, mais rápido
+
+    const startCounters = () => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const targetText = counter.getAttribute("data-target");
+                const target = +targetText;
+                const currentText = counter.innerText.replace(/[^0-9]/g, '');
+                const current = +currentText;
+
+                const increment = target / speed;
+
+                if (current < target) {
+                    const nextValue = Math.ceil(current + increment);
+                    if (targetText.includes("%")) {
+                        counter.innerText = nextValue + "%";
+                    } else if (targetText.includes("+")) {
+                        counter.innerText = "+" + nextValue;
+                    } else {
+                        counter.innerText = nextValue;
+                    }
+                    setTimeout(updateCount, 15);
+                } else {
+                    counter.innerText = targetText.includes("%") ? target + "%" : "+" + target;
+                }
+            };
+            updateCount();
         });
     };
 
-    // Ativa a animação quando a seção de estatísticas estiver visível na tela
-    const observer = new IntersectionObserver((entries) => {
+    // Monitorar rolagem para disparar os números só quando visível
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateStats();
+                startCounters();
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, observerOptions);
 
-    const statsSection = document.querySelector(".stats");
-    if(statsSection) {
-        observer.observe(statsSection);
+    const impactoSection = document.getElementById("impacto");
+    if (impactoSection) {
+        observer.observe(impactoSection);
     }
 });
