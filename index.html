@@ -5,108 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Forte, Futuro Sustentável</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>O equilíbrio entre alta produtividade e conservação ambiental.</p>
-            <a href="#sobre" class="btn-main">Saber Mais</a>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">Agro<span>Sustentável</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#pilares">Pilares</a></li>
+                    <li><a href="#videos">Vídeos</a></li>
+                    <li><a href="#impacto">Impacto</a></li>
+                    <li><a href="#contato" class="btn-nav">Contato</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Agro Forte, Futuro Sustentável</h1>
+            <p>Produtividade aliada à preservação ambiental para alimentar o amanhã.</p>
+            <a href="#sobre" class="btn-primary">Conhecer Iniciativa</a>
+        </div>
+    </section>
+
     <section id="sobre" class="section sobre">
         <div class="container">
-            <h2>O Compromisso do Agro Moderno</h2>
-            <p class="lead-text">
-                O agro forte e sustentável baseia-se no equilíbrio entre alta produtividade e conservação ambiental, utilizando tecnologias como plantio direto, bioinsumos e Integração Lavoura-Pecuária-Floresta (ILPF). Essa abordagem visa atender à demanda global por alimentos, reduzir impactos climáticos e valorizar o produto final com certificações sustentáveis.
-            </p>
+            <span class="section-tag">Quem Somos</span>
+            <h2>Equilíbrio e Produtividade</h2>
+            <div class="sobre-grid">
+                <div class="sobre-text">
+                    <p>O agro forte e sustentável baseia-se no equilíbrio entre alta produtividade e conservação ambiental, utilizando tecnologias como plantio direto, bioinsumos e Integração Lavoura-Pecuária-Floresta (ILPF).</p>
+                    <p>Essa abordagem visa atender à demanda global por alimentos, reduzir impactos climáticos e valorizar o produto final com certificações sustentáveis.</p>
+                </div>
+                <div class="sobre-img">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80" alt="Lavoura de soja sustentável e tecnologia agrícola">
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="section stats bg-light">
+    <section id="pilares" class="section pilares bg-light">
         <div class="container">
-            <div class="grid-stats">
-                
-                <div class="card">
-                    <div class="card-icon">🌱</div>
-                    <h3>Tecnologia & Inovação</h3>
-                    <p>Controle biológico e agricultura de precisão.</p>
-                    <div class="stat-number">+4</div>
-                    <span class="stat-label">Novas Techs / Ano</span>
+            <span class="section-tag">Como Atuamos</span>
+            <h2>Pilares do Desenvolvimento</h2>
+            <p class="section-subtitle">As bases tecnológicas e ambientais que sustentam nossa produção</p>
+            
+            <div class="grid-pilares">
+                <div class="pilar-card">
+                    <div class="pilar-icon">🌱</div>
+                    <h3>Tecnologia e Inovação</h3>
+                    <p>Controle biológico, bioinsumos e aplicação de agricultura de precisão para otimizar recursos.</p>
                 </div>
-
-                <div class="cardHighlight">
-                    <div class="card-icon">🌳</div>
+                <div class="pilar-card">
+                    <div class="pilar-icon">🌳</div>
                     <h3>Conservação</h3>
-                    <p>Manejo que protege o solo e evita o desmatamento.</p>
-                    <div class="stat-number">75%</div>
-                    <span class="stat-label">Áreas Recuperadas</span>
+                    <p>Manejo de conservação que protege a estrutura biológica do solo e evita o desmatamento.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">🚜</div>
+                <div class="pilar-card">
+                    <div class="pilar-icon">🐂</div>
                     <h3>ILPF</h3>
-                    <p>Integração que sequestra carbono e otimiza a terra.</p>
-                    <div class="stat-number">100%</div>
-                    <span class="stat-label">Foco em Sustentabilidade</span>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">🤝</div>
-                    <h3>ESG & Agrinho</h3>
-                    <p>Práticas sociais e governança corporativa no campo.</p>
-                    <div class="stat-badge">Programa Agrinho 2026</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section gallery">
-        <div class="container">
-            <h2>Práticas Sustentáveis em Foco</h2>
-            <p class="section-subtitle">Visualizando a mudança no campo</p>
-            <div class="grid-gallery">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80" alt="Plantação Sustentável">
-                    <div class="gallery-desc">Agricultura de Precisão</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=600&q=80" alt="Reflorestamento e Integração">
-                    <div class="gallery-desc">Integração Lavoura-Floresta</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=600&q=80" alt="Tecnologia no Campo">
-                    <div class="gallery-desc">Uso de Bioinsumos</div>
+                    <p>Integração Lavoura-Pecuária-Floresta: sistema que sequestra carbono e otimiza o uso da terra.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section videos bg-light">
+    <section id="videos" class="section videos">
         <div class="container">
-            <h2>Produções & Casos de Sucesso</h2>
-            <p class="section-subtitle">Assista e entenda como a tecnologia transforma o setor</p>
+            <span class="section-tag">Multimídia</span>
+            <h2>O Agro em Ação</h2>
+            <p class="section-subtitle">Acompanhe de perto as transformações e práticas reais do setor</p>
             
             <div class="grid-videos">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/jXYN97GMoGM" title="Vídeo Agro 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <h4>Inovação e Produtividade</h4>
+                <div class="video-item">
+                    <div class="iframe-wrapper">
+                        <iframe src="https://www.youtube.com/embed/jXYN97GMoGM" title="Vídeo Agro 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <h4>Inovação e Tecnologia no Campo</h4>
                 </div>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/-p_9S2mhpiI" title="Vídeo Agro 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <h4>Preservação e o Futuro Verde</h4>
+                <div class="video-item">
+                    <div class="iframe-wrapper">
+                        <iframe src="https://www.youtube.com/embed/-p_9S2mhpiI" title="Vídeo Agro 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <h4>Preservação Ambiental e Futuro Verde</h4>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="impacto" class="section impacto bg-light">
+        <div class="container">
+            <span class="section-tag">Nossos Resultados</span>
+            <h2>O Impacto do Trabalho</h2>
+            
+            <div class="grid-impacto">
+                <div class="impacto-card">
+                    <div class="impacto-num" data-target="4">+4</div>
+                    <p class="impacto-desc"><strong>Novas Techs/Ano</strong> de inovação contínua aplicada nas lavouras.</p>
+                </div>
+                <div class="impacto-card">
+                    <div class="impacto-num" data-target="75">75%</div>
+                    <p class="impacto-desc"><strong>Áreas Recuperadas</strong> por meio de práticas sustentáveis e manejo correto.</p>
+                </div>
+                <div class="impacto-card esg">
+                    <div class="impacto-badge">ESG & Agrinho</div>
+                    <p class="impacto-desc">Alinhamento estrito a práticas sociais e governança (Programa Agrinho 2026).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section contato">
+        <div class="container">
+            <span class="section-tag">Fale Conosco</span>
+            <h2>Junte-se ao Futuro do Agro</h2>
+            <p class="section-subtitle">Quer saber mais sobre certificações ou tecnologias sustentáveis? Envie sua mensagem.</p>
+            
+            <form id="contact-form" class="form-contato">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Seu Nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Seu E-mail" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="Como podemos ajudar?" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar Mensagem</button>
+            </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Agro Forte, Futuro Sustentável - Programa Agrinho. Todos os direitos reservados.</p>
+        <div class="container">
+            <p>&copy; 2026 Agro Forte, Futuro Sustentável. Programa Agrinho. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
